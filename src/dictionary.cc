@@ -85,9 +85,9 @@ int64_t Dictionary::ntokens() const {
 const std::vector<int32_t>& Dictionary::getSubwords(int32_t i) const {
   assert(i >= 0);
   assert(i < nwords_);
-  if (words_[i].word == "bye") {
+  if (words_[i].word == "bye" || words_[i].word == "by") {
       for (int j = 0; j < words_[i].subwords.size(); j++) {
-          std::cout << "bye[" << j << "] is: " << words_[i].subwords[j];
+          std::cout << words_[i].word << "[" << j << "] is: " << words_[i].subwords[j] << std::endl;
       }
   }
   return words_[i].subwords;
