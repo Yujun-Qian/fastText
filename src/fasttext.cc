@@ -51,6 +51,8 @@ FastText::FastText()
     : quant_(false), wordVectors_(nullptr), trainException_(nullptr) {}
 
 void FastText::addInputVector(Vector& vec, int32_t ind) const {
+  std::cout << "_Input matrix size: " << input_->size(0) << std::endl;
+  std::cout << "_Input matrix size: " << input_->size(1) << std::endl;
   vec.addRow(*input_, ind);
 }
 
