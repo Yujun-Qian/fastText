@@ -173,6 +173,8 @@ void Dictionary::computeSubwords(
     const std::string& word,
     std::vector<int32_t>& ngrams,
     std::vector<std::string>* substrings) const {
+  std::cout << "args_->minn is: " <<  args_->minn << std::endl;
+  std::cout << "args_->maxn is: " <<  args_->maxn << std::endl;
   for (size_t i = 0; i < word.size(); i++) {
     std::string ngram;
     if ((word[i] & 0xC0) == 0x80) {
@@ -186,6 +188,7 @@ void Dictionary::computeSubwords(
       if (n >= args_->minn && !(n == 1 && (i == 0 || j == word.size()))) {
         int32_t h = hash(ngram) % args_->bucket;
         pushHash(ngrams, h);
+        std::cout << "ngram is: " << ngram << std::endl;
         if (substrings) {
           substrings->push_back(ngram);
         }
